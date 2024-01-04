@@ -1,7 +1,17 @@
 # tensorflow-image-classification
+
 Simple code to create an image classification model with Tensorflow.
 
+# Usage
+
+Create 2 folders with the names "class1" and "class2" in the same directory as the python files. Each folder must have images representing the same thing, for example: class1 represents dogs and class2 represents cats.
+
+Running tf_training.py will split the given images into a set for training and a set for testing. After iterating through the training images for as many epochs as were specified, the network will be saved into the directory "xarxa_neuronal", and then it will test itself with the images it saved for testing.
+
+Running tf_testing.py will load the network saved into "xarxa_neuronal" and show random images from the testing set, it will then try to predict what category the image belongs to and print it.
+
 # cats and dogs
+
 As an example I used this code to differentiate pictures of cats and dogs. When the model is given a picture its objective is to determine whether there is a cat or a dog present.
 
 I used a dataset of 10.000 pictures, 5.000 pictures of each animal. Of those pictures I dedicated 8.000 to the training of the model and 2.000 to its testing. Those testing images were not present in the training, so it would be the model's first time seeing them, this is done to ensure that the model does not just memorize the training images and give a false accuracy.
