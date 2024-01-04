@@ -23,7 +23,8 @@ for categ in categories:
     nou_path = os.path.join(PATH, categ)
     count = 0
     for path_imatge in os.listdir(nou_path):
-        img = cv2.imread(os.path.join(PATH, categ, path_imatge))
+        img = cv2.imread(os.path.join(PATH, categ, path_imatge), cv2.IMREAD_GRAYSCALE)
+        img = cv2.resize(img, (150, 150))
         if count%int(100/percentage_test_images) != 0:
             train_x.append(img)
             if (categ == categories[0]):
@@ -61,18 +62,6 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Dense(32, activation = "relu"),
     tf.keras.layers.Dense(2, activation = "softmax")
     ])
-
-""" Another, more simple model for the neural network
-model = tf.keras.models.Sequential([
-    tf.keras.layers.Conv2D(32, (5,5), activation = "relu", input_shape=(48, 48, 3), padding='same'),
-    tf.keras.layers.MaxPooling2D((3, 3)),
-    tf.keras.layers.Conv2D(32, (3,3), activation = "relu", padding='same'),
-    tf.keras.layers.MaxPooling2D((2, 2)),
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(16, activation = "relu"),
-    tf.keras.layers.Dense(2, activation = "softmax")
-    ])
-"""
 
 model.summary()
 
