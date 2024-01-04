@@ -5,7 +5,7 @@ import random
 import os
 import cv2
 
-categories = ['class2', 'class2']
+categories = ['class1', 'class2']
 
 PATH = os.getcwd()
 
