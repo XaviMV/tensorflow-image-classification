@@ -23,7 +23,8 @@ for categ in categories:
     nou_path = os.path.join(PATH, categ)
     count = 0
     for path_imatge in os.listdir(nou_path):
-        img = cv2.imread(os.path.join(PATH, categ, path_imatge))
+        img = cv2.imread(os.path.join(PATH, categ, path_imatge), cv2.IMREAD_GRAYSCALE)
+        img = cv2.resize(img, (150, 150))
         if count%int(100/percentage_test_images) != 0:
             train_x.append(img)
             if (categ == categories[0]):
